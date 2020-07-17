@@ -1,17 +1,27 @@
-let name = 'Max';
+const addMovie = document.getElementById('add-movie-btn');
+const search = document.getElementById('search-btn');
 
-if (name === 'Max') {
-  let hobbies = ['Sports', 'Cooking'];
-  console.log(hobbies);
+const movies = [];
 
-}
+const captureMovie = () => {
+    const getMovie = document.getElementById('title').value;
+    const getExtraInfo = document.getElementById('extra-name').value;
+    const getExtraInfoValue = document.getElementById('extra-value').value;
 
-function greet() {
-  let age = 30;
-  let name = 'Manuel';
-  console.log(name, age, hobbies); // error hobbies is not accessible because of "let" 
-}
+    if ( getExtraInfoValue.trim() === "" || getExtraInfo.trim() === "" || getMovie.trim() ===""){
+        return;
+    }
 
-console.log(name, hobbies); // error hobbies is not accessible because of "let" 
+    const movieCapturedFromUser = {
+       info :
+       { getMovie ,
+        [getExtraInfo] : getExtraInfoValue
+       },
+       id : Math.random()
+    };
 
-greet();
+    movies.push(movieCapturedFromUser);
+    console.log(movieCapturedFromUser);
+} 
+
+addMovie.addEventListener('click', captureMovie);
